@@ -1,0 +1,8 @@
+SELECT COUNT( DISTINCT status) FROM tasks ORDER BY 1;
+SELECT p.id, p.name, COUNT(t.project_id) FROM tasks t JOIN projects p ON t.projects_id=p.id ORDER BY 3 DESC;
+SELECT p.id, p.name, count(t.project_id) FROM tasks t JOIN projects p ON t.project_id=p.id ORDER BY p.name;
+SELECT p.name, t.name FROM tasks t JOIN projects p ON t.project_id=p.id WHERE t.name LIKE 'N%';
+SELECT p.id, p.name, COUNT(tasks) FROM tasks t JOIN projects p ON t.project_id=p.id WHERE p.name LIKE '%a%' ORDER BY p.id;
+SELECT name FROM tasks GROUP BY name HAVING COUNT (*)>1 ORDER BY name;
+SELECT tasks.name FROM tasks JOIN projects  ON tasks.project_id=projects.id WHERE project.name="Garage" GROUP BY tasks.name, tasks.status  HAVING COUNT(tasks)>1 ORDER BY COUNT(tasks);
+SELECT projects.id, projects.name FROM tasks JOIN projects ON tasks.project_id=projects.id WHERE tasks.status="completed" GROUP BY projects.id HAVING COUNT(tasks)>10 ORDER BY projects.id ;
